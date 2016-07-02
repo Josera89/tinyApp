@@ -1,12 +1,16 @@
 "use strict";
 var express = require("express");
+var methodOverride = require('method-override')
+const bodyParser = require("body-parser");
+
 var app = express();
 
 app.set("view engine", "ejs");
 var PORT = process.env.PORT || 8080;
 
-const bodyParser = require("body-parser");
+
 app.use(bodyParser.urlencoded());
+app.use(methodOverride('_method'))
 
 
 var urlDatabase = {
@@ -47,7 +51,7 @@ app.post("/urls", (req, res) => {
   var longURL = req.body.longURL;
   var shortURL = generateRandomString()
   urlDatabase[shortURL] = longURL;
-  res.redirect(`/urls/${shortURL}`);         // Respond with 'Ok' (we will replace this)
+  res.redirect(`/urls/${shortURL}`);
 });
 
 app.get("/urls/:id", (req, res) => {
@@ -60,6 +64,10 @@ app.get("/u/:id", (req, res) => {
   res.redirect(longURL);
 });
 
+app.delete("/urls/:id", function (req, res) {
+  delete urlDatabase[shortURL];
+  res.send("URL DELETED!!!");
+});
 
 function generateRandomString() {
   return ""+Math.random()

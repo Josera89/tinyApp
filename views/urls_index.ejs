@@ -15,8 +15,8 @@
 
         <% for (key in urls) { %>
         <li><a href="/urls/<%=key%>"><%= key %></a>
-        <form method="POST" action="/urls/${key}?_method=DELETE">
-        <button style="margin-left:70px; position:abolute;" type="submit">Delete resource</button>
+        <form method="POST" action="/urls/<%=key%>?_method=DELETE">
+        <button style="margin-left:70px;position:abolute;" type="submit">Delete resource</button>
         </form>
         </li>
         <br></style>
