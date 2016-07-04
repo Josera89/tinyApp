@@ -3,27 +3,24 @@
 <body>
 
 
-<header>
+<header style="margin-left:40%;">
 
    <% include ./partials/_header %>
 
 </header>
 
-
-    <br>
     <ul>
 
         <% for (key in urls) { %>
-        <li><a href="/urls/<%=key%>"><%= key %></a>
-        <form method="POST" action="/urls/<%=key%>?_method=DELETE">
-        <button style="margin-left:70px;position:abolute;" type="submit">Delete resource</button>
+        <li><p><%= key %><p> <a href="/urls/<%=key%>">EDIT</a>
+        <form style="position:relative;" method="POST" action="/urls/<%=key%>?_method=DELETE">
+        <button style="margin-left:50px;position:absolute;top:-35px;" type="submit">Delete resource</button>
         </form>
         </li>
-        <br></style>
+        <br>
         <% }; %>
         </ul>
-    <br>
-    <a href="/urls/new">Shorten URL</a>
+    <a style="margin-left:20px;" href="/urls/new">Shorten URL</a>
 
 
 </body>

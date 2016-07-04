@@ -65,8 +65,13 @@ app.get("/u/:id", (req, res) => {
 });
 
 app.delete("/urls/:id", function (req, res) {
-  delete urlDatabase[shortURL];
-  res.send("URL DELETED!!!");
+  delete urlDatabase[req.params.id];
+  res.redirect("/urls");
+});
+
+app.put("/urls/:id", (req, res) => {
+  urlDatabase[req.params.id] = req.body.longURL;
+  res.redirect("/urls");
 });
 
 function generateRandomString() {

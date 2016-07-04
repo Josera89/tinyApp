@@ -5,8 +5,14 @@
     <br>
     <ul>
 
-       <li><a href="<%= urlDatabase[shortURL] %>"><%= urlDatabase[shortURL] %> </a></li>
-       <li><%= shortURL %></li>
+      <li><a href="<%= urlDatabase[shortURL] %>"><%= urlDatabase[shortURL] %> </a></li>
+      <li><%= shortURL %></li>
+      <br>
+      <form method="POST" action="/urls/<%=key%>?_method=PUT">
+      <input style="width:12%; border-radius:5px;" value="<%= urlDatabase[shortURL] %>" name="longURL"><button style="margin-left:10px;" >UPDATE</button>
+
+      </form>
+
 
     </ul>
 </body>
